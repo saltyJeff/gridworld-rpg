@@ -13,6 +13,6 @@ public class Upgrade {
 	}
 	@Override
 	public String toString() {
-		return String.format("%s requires %s xp", name, xpRequired);
+		return String.format("%s (%s xp)", name, xpRequired);
 	}
 }
