@@ -5,6 +5,9 @@ import upgrades.Upgrade;
 import upgrades.UpgradeTree;
 
 public class Buggy extends Bug {
+	private Buggy () {
+		applyUpgrade(UpgradeTree.root);
+	};
 	private static Buggy buggy;
 	public static Buggy getBuggy() {
 		if(buggy == null) {
@@ -15,7 +18,9 @@ public class Buggy extends Bug {
 	public int level;
 	public int xp;
 	public int hp;
-	public static void applyUpgrade(Upgrade u) {
+	public Upgrade lastUpgrade;
+	public void applyUpgrade(Upgrade u) {
+		lastUpgrade = u;
 		switch(u.name) {
 		//stupid shit
 		}
