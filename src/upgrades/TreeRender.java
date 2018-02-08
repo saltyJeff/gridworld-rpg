@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -17,13 +18,14 @@ public class TreeRender extends JPanel {
 		setPreferredSize(new Dimension(300, 200));
 		setLayout(null);
 		dropButton(UpgradeTree.root, 0, 100);
+		add(new JLabel("Experience: " + Buggy.getBuggy().xp));
 		
 	}
 	private void dropButton(Upgrade root, int x, int y) {
 		if(root == null) {
 			return;
 		}
-		System.out.println("hello");
+		//System.out.println("hello");
 		JButton butt = new JButton();
 		butt.setText(root.toString());
 		if(root == Buggy.getBuggy().lastUpgrade) {

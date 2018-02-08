@@ -3,6 +3,7 @@ import info.gridworld.actor.Flower;
 import info.gridworld.actor.Rock;
 import info.gridworld.grid.Location;
 import rpg.Buggy;
+import upgrades.Upgrade;
 import upgrades.UpgradeUI;
 
 public class Main {
@@ -17,6 +18,7 @@ public class Main {
         world.show();
         UpgradeUI upgradeUi = new UpgradeUI();
         upgradeUi.setVisible(true);
+        //Buggy.getBuggy().applyUpgrade(new Upgrade("Thicc", 20, null, null));
 	}
 
 }
