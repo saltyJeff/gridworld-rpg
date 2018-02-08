@@ -25,14 +25,7 @@ public class TreeRender extends JPanel {
 		if(root == null) {
 			return;
 		}
-		//System.out.println("hello");
-		JButton butt = new JButton();
-		butt.setText(root.toString());
-		if(root == Buggy.getBuggy().lastUpgrade) {
-			butt.setBackground(Color.yellow);
-		}
-		butt.setBounds(x,  y, 140, 40);
-		add(butt);
+		add(new UpgradeButton(root, x, y));
 		dropButton(root.left, x + 160, y - 60);
 		dropButton(root.right, x + 160, y + 60);
 	}
