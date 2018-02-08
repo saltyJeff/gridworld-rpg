@@ -14,7 +14,7 @@ public class Main {
         world.add(new Location(8,0), new Rock());
         world.add(new Location(6,0), new Rock());
         world.add(new Location(5,0), new Rock());
-        world.add(new Location(1,6), new Flower());
+        world.add(new Location(1,6), new RockPoopingBuggy());
         world.show();
         UpgradeUI upgradeUi = new UpgradeUI();
         upgradeUi.setVisible(true);
