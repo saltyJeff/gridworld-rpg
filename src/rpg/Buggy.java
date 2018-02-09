@@ -5,7 +5,6 @@ import java.awt.Color;
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Bug;
 import info.gridworld.grid.Location;
-import upgrades.BoomFlower;
 import upgrades.Upgrade;
 import upgrades.UpgradeTree;
 

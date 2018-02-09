@@ -3,6 +3,7 @@ import info.gridworld.actor.Flower;
 import info.gridworld.actor.Rock;
 import info.gridworld.grid.Location;
 import rpg.Buggy;
+import rpg.RockPoopingBuggy;
 import upgrades.Upgrade;
 import upgrades.UpgradeUI;
 

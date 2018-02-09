@@ -1,3 +1,4 @@
+package rpg;
 import info.gridworld.actor.Bug;
 import info.gridworld.actor.Rock;
 import info.gridworld.grid.Location;
