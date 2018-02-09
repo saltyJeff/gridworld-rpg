@@ -4,12 +4,14 @@ import java.awt.Color;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Bug;
+import info.gridworld.actor.Rock;
 import info.gridworld.grid.Location;
 import upgrades.BoomFlower;
 import upgrades.Upgrade;
 import upgrades.UpgradeTree;
 
 public class Buggy extends Bug {
+	static boolean burst = true;
 	private Buggy () {
 		applyUpgrade(UpgradeTree.root);
 	};
@@ -25,18 +27,27 @@ public class Buggy extends Bug {
 	public int hp;
 	public Upgrade lastUpgrade;
 	public void applyUpgrade(Upgrade u) {
-		System.out.println("Called");
+		//System.out.println("Called");
 		lastUpgrade = u;
 		switch(u.name) {
 		case "burst":
 			break;
 		case "thicc":
-			System.out.println(Buggy.getBuggy().getColor());
+			//System.out.println(Buggy.getBuggy().getColor());
 			Buggy.getBuggy().setColor(Color.BLACK);
 			break;
 		}
 	}
 	
+	@Override
+	public boolean canMove() {
+		boolean Valid = Buggy.getBuggy().getGrid().isValid(Buggy.getBuggy().getLocation().getAdjacentLocation(Buggy.getBuggy().getDirection()));
+		if(!super.canMove() && Valid && (Buggy.getBuggy().getGrid().get(Buggy.getBuggy().getLocation().getAdjacentLocation(Buggy.getBuggy().getDirection())) instanceof Rock && burst)) {
+			Buggy.getBuggy().getGrid().get(Buggy.getBuggy().getLocation().getAdjacentLocation(Buggy.getBuggy().getDirection())).removeSelfFromGrid();
+		}
+			return super.canMove();
+		
+	}
 	@Override
 	public void act() {
 			Location ll = Buggy.getBuggy().getLocation();
