@@ -15,9 +15,9 @@ import rpg.Buggy;
 
 public class TreeRender extends JPanel {
 	public TreeRender() {
-		setPreferredSize(new Dimension(300, 400));
+		setPreferredSize(new Dimension(600, 400));
 		setLayout(null);
-		dropButton(UpgradeTree.root, 0, 200);
+		dropButton(UpgradeTree.root, 0, getPreferredSize().height / 2);
 		add(new JLabel("Experience: " + Buggy.getBuggy().xp));
 		
 	}

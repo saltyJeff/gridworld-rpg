@@ -1,3 +1,5 @@
+import java.awt.KeyboardFocusManager;
+
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Flower;
 import info.gridworld.actor.Rock;
@@ -19,8 +21,9 @@ public class Main {
         world.add(new Location(1,6), new RockPoopingBuggy());
         world.show();
         UpgradeUI upgradeUi = new UpgradeUI();
+        upgradeUi.setLocation(700, 30);
         upgradeUi.setVisible(true);
-        upgradeUi.addKeyListener(Input.getInput().getListener());
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(Input.getInput().getListener());
         //Buggy.getBuggy().applyUpgrade(new Upgrade("Thicc", 20, null, null));
 	}
 

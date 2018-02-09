@@ -1,4 +1,5 @@
 package rpg;
+import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -12,9 +13,9 @@ public class Input {
 		}
 		return input;
 	}
-	private KeyListener listener = new KeyListener() {
+	private KeyEventDispatcher listener = new KeyEventDispatcher() {
 		@Override
-		public void keyPressed(KeyEvent evt) {
+		public boolean dispatchKeyEvent(KeyEvent evt) {
 			switch(evt.getKeyCode()) {
 			case 37:
 				direction = Location.LEFT;
@@ -29,16 +30,13 @@ public class Input {
 				direction = Location.SOUTH;
 				break;
 			}
+			return false;
 		}
-		@Override
-		public void keyTyped(KeyEvent e) {}
-		@Override
-		public void keyReleased(KeyEvent arg0) {}
 	};
-	public KeyListener getListener() {
+	public KeyEventDispatcher getListener() {
 		return listener;
 	}
-	private int direction;
+	private int direction = Location.RIGHT;
 	
 	public int dir() {
 		return direction;

@@ -1,5 +1,6 @@
 package upgrades;
 
+import java.awt.Dimension;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -14,7 +15,9 @@ public class UpgradeUI extends JFrame {
 	public UpgradeUI () {
 		TreeRender treeRender = new TreeRender();
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
-		add(new JScrollPane(treeRender));
+		JScrollPane scrolly = new JScrollPane(treeRender);
+		scrolly.setPreferredSize(new Dimension(400, 400));
+		add(scrolly);
 		JLabel label = new JLabel();
 		add(label);
 		pack();

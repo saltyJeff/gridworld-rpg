@@ -48,8 +48,11 @@ public class Buggy extends Bug {
 	}
 	@Override
 	public boolean canMove() {
+		if(super.canMove()) {
+			return true;
+		}
 		if(!thicc) {
-			return super.canMove();
+			return false;
 		}
 		Location fwd = getLocation().getAdjacentLocation(getDirection());
 		if(getGrid().isValid(fwd)) {
@@ -64,6 +67,9 @@ public class Buggy extends Bug {
 	@Override
 	public void act() {
 		setDirection(Input.getInput().dir());
-		super.act();
+		if(canMove()) {
+			xp += 100;
+			move();
+		}
 	}
 }
