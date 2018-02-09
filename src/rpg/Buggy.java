@@ -10,7 +10,6 @@ import upgrades.Upgrade;
 import upgrades.UpgradeTree;
 
 public class Buggy extends Bug {
-	static boolean burst = true;
 	private Buggy () {
 		applyUpgrade(UpgradeTree.root);
 	};
@@ -25,42 +24,46 @@ public class Buggy extends Bug {
 	public int xp = 0;
 	public int hp;
 	public Upgrade lastUpgrade;
+	
+	private boolean thicc = false;
+	private boolean keyboard = false;
+	private boolean burst = false;
+
 	public void applyUpgrade(Upgrade u) {
 		//System.out.println("Called");
 		lastUpgrade = u;
 		switch(u.name) {
 		case "burst":
+			burst = true;
+			break;
+		case "keyboard":
+			keyboard = true;
 			break;
 		case "thicc":
 			//System.out.println(Buggy.getBuggy().getColor());
-			Buggy.getBuggy().setColor(Color.BLACK);
+			setColor(Color.BLACK);
+			thicc = true;
 			break;
 		}
 	}
-	
 	@Override
 	public boolean canMove() {
-		boolean Valid = Buggy.getBuggy().getGrid().isValid(Buggy.getBuggy().getLocation().getAdjacentLocation(Buggy.getBuggy().getDirection()));
-		if(!super.canMove() && Valid && (Buggy.getBuggy().getGrid().get(Buggy.getBuggy().getLocation().getAdjacentLocation(Buggy.getBuggy().getDirection())) instanceof Rock && burst)) {
-			Buggy.getBuggy().getGrid().get(Buggy.getBuggy().getLocation().getAdjacentLocation(Buggy.getBuggy().getDirection())).removeSelfFromGrid();
-		}
+		if(!thicc) {
 			return super.canMove();
-		
+		}
+		Location fwd = getLocation().getAdjacentLocation(getDirection());
+		if(getGrid().isValid(fwd)) {
+			Actor actor = getGrid().get(fwd);
+			if(actor instanceof Rock) {
+				actor.removeSelfFromGrid();
+				return true;
+			}
+		}
+		return false;
 	}
 	@Override
 	public void act() {
-			Location ll = Buggy.getBuggy().getLocation();
-			//Buggy.getBuggy().moveTo(new Location(6,3));
-			
-			//System.out.println(ll);
-			Actor zz = Buggy.getBuggy().getGrid().get(ll);
-			
-			
-			
-			
-			super.act();
-			if(!ll.equals(Buggy.getBuggy().getLocation()))
-				xp += 10;
-		
+		setDirection(Input.getInput().dir());
+		super.act();
 	}
 }

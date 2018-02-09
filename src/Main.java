@@ -6,6 +6,7 @@ import rpg.Buggy;
 import rpg.RockPoopingBuggy;
 import upgrades.Upgrade;
 import upgrades.UpgradeUI;
+import rpg.Input;
 
 public class Main {
 
@@ -19,6 +20,7 @@ public class Main {
         world.show();
         UpgradeUI upgradeUi = new UpgradeUI();
         upgradeUi.setVisible(true);
+        upgradeUi.addKeyListener(Input.getInput().getListener());
         //Buggy.getBuggy().applyUpgrade(new Upgrade("Thicc", 20, null, null));
 	}
 
