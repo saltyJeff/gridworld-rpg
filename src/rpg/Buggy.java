@@ -2,8 +2,7 @@ package rpg;
 
 import java.awt.Color;
 
-
-
+import info.gridworld.actor.Actor;
 import info.gridworld.actor.Bug;
 import info.gridworld.grid.Location;
 import upgrades.BoomFlower;
@@ -22,26 +21,36 @@ public class Buggy extends Bug {
 		return buggy;
 	}
 	public int level;
-	public int xp =10000;
+	public int xp = 0;
 	public int hp;
 	public Upgrade lastUpgrade;
 	public void applyUpgrade(Upgrade u) {
+		System.out.println("Called");
 		lastUpgrade = u;
 		switch(u.name) {
-		case "Burst":
-			Buggy.getBuggy().getGrid().put(Buggy.getBuggy().getLocation().getAdjacentLocation(0), new Buggy());
-		case "Thicc":
+		case "burst":
+			break;
+		case "thicc":
+			System.out.println(Buggy.getBuggy().getColor());
 			Buggy.getBuggy().setColor(Color.BLACK);
+			break;
 		}
 	}
 	
 	@Override
 	public void act() {
 			Location ll = Buggy.getBuggy().getLocation();
-			super.act();
-			Buggy.getBuggy().getGrid().put(ll, new BoomFlower());
+			//Buggy.getBuggy().moveTo(new Location(6,3));
 			
-
+			//System.out.println(ll);
+			Actor zz = Buggy.getBuggy().getGrid().get(ll);
+			
+			
+			
+			
+			super.act();
+			if(!ll.equals(Buggy.getBuggy().getLocation()))
+				xp += 10;
 		
 	}
 }
